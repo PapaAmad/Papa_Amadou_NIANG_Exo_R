@@ -1,0 +1,28 @@
+---
+title: "Dashboard et gestion de site web avec R"
+author: 'Groupe4 : Ameth FAYE et Papa Amadou NIANG'
+date: "08 février 2024"
+output: pdf_document
+---
+
+# [Plan de l'exposé:]{.underline}
+
+## I- Présentation de R Shiny
+
+### 1- Introduction à R Shiny
+
+### 2- Création de site Web avec R Shiny
+
+## II- Le package Shiny Dashboard
+
+### 1- Les principales composantes de Shiny Dashboard
+
+### 2- Avantages et limites de Shiny Dashboard
+
+## III- Gestion de sites web avec R Shiny et R Markdown
+
+### 1- Combinaison R Shiny et R Markdown pour une automatisation de rapports
+
+### 2- Ajout de contenu interactif
+
+### 3- Automatisation de mise à jour

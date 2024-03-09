@@ -1,0 +1,86 @@
+---
+title: "Rapport d'étude"
+author: "Papa Amadou NIANG"
+date: "2024-03-08"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Présention de la base base de données
+
+Dans une étude fictive, 1000 profils ont été simulés, reflétant une diversité de caractéristiques démographiques et socio-professionnelles. Les variables incluent le sexe, la taille, le poids, et l'âge, avec des distributions normales et uniformes. Les données s'étendent sur des aspects tels que le salaire, la profession, la ville de résidence, le niveau d'éducation, le statut familial, les habitudes de vie, le bien-être, le groupe sanguin, la vaccination contre le Covid-19, la distance domicile-travail, et le type de logement. Cette base de données imaginaire offre un terrain fertile pour des analyses statistiques multidimensionnelles.
+
+```{r , echo=TRUE}
+
+# Définir le nombre d'observations
+n <- 1000
+
+# Générer des données aléatoires
+data <- data.frame(
+  Sexe = sample(c("Homme", "Femme"), n, replace = TRUE),
+  Taille = rnorm(n, mean=170, sd=10), 
+  Poids = rnorm(n, mean=70, sd=15),
+  Age = sample(18:100, n, replace = TRUE), 
+  Salaire = runif(n, min=20000, max=100000),
+  Profession = sample(c("Enseignant", "Ingénieur", "Médecin", 
+                        "Avocat", "Artiste"), n, replace = TRUE),
+  Ville = sample(c("Dakar", "Thiès", "Kaolack", "Ziguinchor", 
+                   "Touba"), n, replace = TRUE),
+  Education = sample(c("Secondaire", "Bac", "Licence", 
+                       "Master", "Doctorat"), n, replace = TRUE),
+  Enfant = sample(0:5, n, replace = TRUE),
+  Fumeur = sample(c("Oui", "Non"), n, replace = TRUE),
+  Sportif = sample(c("Oui", "Non"), n, replace = TRUE),
+  ScoreSatisfaction = runif(n, 0, 100),
+  GroupeSanguin = sample(c("A", "B", "AB", "O"), n, replace = TRUE), 
+  VaccinéCovid = sample(c(TRUE, FALSE), n, replace = TRUE),
+  DistanceTravail = rnorm(n, mean=10, sd=5),
+  TypeLogement = sample(c("Maison", "Appartement", 
+                          "Studio"), n, replace = TRUE)
+)
+summary(data)
+```
+
+## Statistiques descritives
+
+Nous commençons par examiner les variables quantitatives de notre ensemble de données. La taille moyenne des individus est de `r mean(data$Taille)` cm, avec un écart-type de `r sd(data$Taille)`. Cela indique une distribution relativement homogène autour de la moyenne. En ce qui concerne le poids, la moyenne est de `r mean(data$Poids)` kg, accompagnée d’un écart-type de `r sd(data$Poids)`, reflétant une variabilité similaire à celle de la taille.
+
+L’âge moyen des participants est de `r mean(data$Age)` ans, ce qui suggère une population d’adultes avec une présence notable de personnes âgées, comme le montre l’écart-type de `r sd(data$Age)` ans. Le salaire annuel moyen s’élève à `r mean(data$Salaire)` euros, avec une dispersion mesurée par un écart-type de `r sd(data$Salaire)` euros, indiquant une disparité économique au sein de la population.
+
+### Visualisation des données
+
+```{r}
+library(ggplot2)
+ggplot(data = data, aes(x = Taille)) +
+  geom_histogram(binwidth = 5) +
+  xlab("Taille") +
+  ylab("Fréquence")
+
+```
+
+
+```{r}
+ggplot(data = data, aes(x = Sexe)) +
+  geom_bar() +
+  xlab("Sexe") +
+  ylab("Fréquence")
+
+```
+
+
+
+```{r}
+ggplot(data = data, aes(x = "", y = ScoreSatisfaction)) +
+  geom_boxplot() +
+  ylab("Score de Satisfaction")
+
+```
+
+
+```{r}
+
+```
+
