@@ -133,7 +133,13 @@ slice_min(cereales[cereales$Unite_achat == 100 & cereales$cereales__id == 3,], Q
 slice_max(cereales[cereales$Unite_cons==100 & cereales$cereales__id == 3],cereales$Qtty_cons, n=7) 
 slice_min(cereales[cereales$Unite_cons==100 & cereales$cereales__id == 3],cereales$Qtty_cons, n=7) 
 
+# Merger la table de conversion
+table_conv <- read_xlsx("Table de conversion phase 2.xlsx", sheet = "nationale")
+names(table_conv)
+names(cereales)
+ cereales <- left_join(cereales, table_conv, by= c("cereales__id"= "produitID", "Unite_cons"="uniteID", "Taille_cons"="tailleID"))
 
+View(cereales)
 
 
 
